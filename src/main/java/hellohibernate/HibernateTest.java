@@ -1,5 +1,7 @@
 package hellohibernate;
 
+import java.util.Collection;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -27,6 +29,16 @@ public class HibernateTest {
 		
 		Vehicle vehicle = new Vehicle();
 		vehicle.setName("carrito");
+		user.setVehicle(vehicle);
+		
+		
+		Vehicle jipe = new Vehicle();
+		jipe.setName("jeep");
+		Vehicle limusine = new Vehicle();
+		limusine.setName("limousine");
+		Collection<Vehicle> col = user.getVehicles();
+		col.add(limusine);
+		col.add(jipe);
 		
 		SessionFactory sessionFact = createSessionFactory();
 		Session session = sessionFact.openSession();
@@ -34,6 +46,8 @@ public class HibernateTest {
 		session.beginTransaction();
 		session.save(user);
 		session.save(vehicle);
+		session.save(jipe);
+		session.save(limusine);
 		session.getTransaction().commit();
 		
 		session.close();//de preferencia num bloco finally

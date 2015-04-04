@@ -1,11 +1,15 @@
 package hellohibernate;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  * Hello world!
@@ -22,6 +26,28 @@ public class UserDetails
 	@ElementCollection
 	private Set<Address> listOfAddresses = new HashSet<Address>();
 	
+	@OneToOne
+	private Vehicle vehicle;
+	
+	@OneToMany
+	private Collection<Vehicle> vehicles = new ArrayList<Vehicle>();
+	
+	public Collection<Vehicle> getVehicles() {
+		return vehicles;
+	}
+
+	public void setVehicles(Collection<Vehicle> vehicles) {
+		this.vehicles = vehicles;
+	}
+
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
+
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
+	}
+
 	public Set<Address> getListOfAddresses() {
 		return listOfAddresses;
 	}
