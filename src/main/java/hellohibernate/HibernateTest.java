@@ -25,11 +25,15 @@ public class HibernateTest {
 		user.getListOfAddresses().add(add1);
 		user.getListOfAddresses().add(add2);
 		
+		Vehicle vehicle = new Vehicle();
+		vehicle.setName("carrito");
+		
 		SessionFactory sessionFact = createSessionFactory();
 		Session session = sessionFact.openSession();
 		
 		session.beginTransaction();
 		session.save(user);
+		session.save(vehicle);
 		session.getTransaction().commit();
 		
 		session.close();//de preferencia num bloco finally

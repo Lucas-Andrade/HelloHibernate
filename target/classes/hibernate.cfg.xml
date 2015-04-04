@@ -29,5 +29,7 @@
     <!-- Drop and re-create the database schema on startup -->
     <property name="hbm2ddl.auto">create</property>
     <mapping class="hellohibernate.UserDetails"/>
+    <mapping class="hellohibernate.Vehicle"/>
+    
   </session-factory>
 </hibernate-configuration>
